@@ -27,25 +27,25 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign-Up/In <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign-In/Sign-Up <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li>
                   <a>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal">
-                      Sign Up
-                    </button>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-in-modal">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sign-in-modal">
                       Sign In
                     </button>
                   </a>
                 </li>
                 <li>
                   <a>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#change-password-modal">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sign-up-modal">
+                      Sign Up
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#change-password-modal">
                       Change Password
                     </button>
                   </a>
@@ -53,7 +53,7 @@
                 <li role="separator" class="divider"></li>
                 <li>
                   <a>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-out-modal">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sign-out-modal">
                       Sign Out
                     </button>
                   </a>
@@ -81,6 +81,35 @@
 
       <!-- START MODALS -->
       <!-- KL - need to change ID so we can use multiple modals -->
+      <!-- START SIGN IN MODAL -->
+      <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="sign-in-modal-label">Sign In Modal</h4>
+            </div>
+            <div class="modal-body">
+              <!-- KL - doesn't have class by default so we need to give it one-->
+              <form class='sign-in-form'>
+                <div class="form-group">
+                  <label for="sign-in-email">Email address</label>
+                    <input type="email" class="form-control" id="sign-in-email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="sign-in-password">Password</label>
+                  <input type="password" class="form-control" id="sign-in-password" placeholder="Password">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END SIGN IN MODAL -->
       <!-- START SIGN UP MODAL -->
       <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -114,37 +143,6 @@
         </div>
       </div>
       <!-- END SIGN UP MODAL -->
-
-      <!-- START SIGN IN MODAL -->
-      <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="sign-in-modal-label">Sign In Modal</h4>
-            </div>
-            <div class="modal-body">
-              <!-- KL - doesn't have class by default so we need to give it one-->
-              <form class='sign-in-form'>
-                <div class="form-group">
-                  <label for="sign-in-email">Email address</label>
-                    <input type="email" class="form-control" id="sign-in-email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                  <label for="sign-in-password">Password</label>
-                  <input type="password" class="form-control" id="sign-in-password" placeholder="Password">
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- END SIGN IN MODAL -->
-
       <!-- END MODALS -->
     </body>
 </html>

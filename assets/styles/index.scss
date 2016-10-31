@@ -1,2 +1,193 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'colors';
+
+html,
+body {
+  box-sizing: border-box;
+  font-family: 'Walter Turncoat', cursive;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  margin: 5px;
+}
+
+h1 {
+  font-family: 'Walter Turncoat', cursive;
+  font-size: 2em;
+}
+
+h2 {
+  display: inline;
+  font-size: 1.5em;
+}
+
+.white {
+  color: $white;
+}
+
+.new-game,
+.login {
+  border-radius: 28px;
+  font-family: "Walter Turncoat", cursive;
+  font-size: 1em;
+}
+
+.small-img {
+  height: 60px;
+  margin-right: 10px;
+  margin-top: 25px;
+  width: 50px;
+}
+
+.title {
+  flex: 50%;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  // display: -webkit-flex;
+  display: flex;
+
+  // -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+
+  font-weight: bold;
+  text-align: center;
+
+}
+
+.wrapper > * {
+  flex: 1 100%;
+  padding: 10px;
+}
+
+// div {
+//  border: 1px solid black;
+// }
+
+.board {
+  align-items: center;
+  display: flex;
+  flex: 0 0 350px;
+  flex-flow: row wrap;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.row {
+  align-items: center;
+  display: flex;
+  flex: 0 0 320px;
+  height: 40%;
+  width: 100%;
+}
+
+.board-item {
+  flex: 0 0 100px;
+  height: 100px;
+  // background: rgba(222, 231, 156, .3);
+}
+
+.b3,
+.b4,
+.b5,
+.b6,
+.b7,
+.b8 {
+  border-top: 2px dotted $black;
+}
+
+.b0,
+.b1,
+.b3,
+.b4,
+.b6,
+.b7 {
+  border-right: 2px dotted $black;
+}
+
+.b0,
+.b1,
+.b2,
+.b3,
+.b4,
+.b5 {
+  border-bottom: 2px dotted $black;
+}
+
+.b1,
+.b2,
+.b4,
+.b5,
+.b7,
+.b8 {
+  border-left: 2px dotted $black;
+}
+
+.header {
+  // background: rgba(114, 140, 0, .6);
+  background: url('../images/background.jpg'), no-repeat, fixed;
+  background-position: bottom;
+  display: flex;
+  opacity: .9;
+}
+
+.red {
+  color: $red;
+  font-size: 2em;
+}
+
+.footer {
+  background: $light-red;
+  // background: rgba(114, 140, 0, .6);
+}
+
+.main {
+  align-items: center;
+  background: $light-green;
+  display: flex;
+  height: 50%;
+  justify-content: center;
+  text-align: left;
+  // background: rgba(132, 139, 121, .4);
+  // background: rgba(222, 231, 156, .7);
+}
+
+.aside-1 {
+  // background: rgba(193, 154, 107, .5); */
+  background: $grey-green;
+  display: flex;
+  flex: 0 1 100px;
+  justify-content: center;
+}
+
+.aside-2 {
+  // background: rgba(193, 154, 107, .5); */
+  background: $grey-green;
+  display: flex;
+  flex: 0 1 100px;
+  justify-content: center;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+  .main { flex: 3 0; }
+  .aside-1 { order: 1; }
+  .main { order: 2; }
+  .aside-2 { order: 3; }
+  .footer { order: 4; }
+}
+
+body {
+  padding: 2em;
+}

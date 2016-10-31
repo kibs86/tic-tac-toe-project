@@ -7,6 +7,7 @@
 
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+      <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Schoolbell|Walter+Turncoat" rel="stylesheet">
     </head>
     <body class="container-fluid">
       <!-- NAVBAR STARS HERE -->
@@ -66,17 +67,48 @@
         </nav>
       <!-- NAVBAR ENDS HERE -->
 
+      <!-- START HEADER -->
+      <div class="wrapper">
+        <header class="header">
+          <div class="title">
+            <h1 class="white">Tic-Tac-Toe <br> <span class="red"> Zombie Edition </span></h1>
+          </div>
+        </header>
+        <!-- END HEADER -->
 
-      <h1>Example</h1>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
-
+        <!-- START GAME BOARD -->
+        <article class="main">
+          <div class="board">
+            <div class="row">
+              <div class="board-item b0"></div>
+              <div class="board-item b1"></div>
+              <div class="board-item b2"></div>
+            </div>
+            <div class="row">
+              <div class="board-item b3"></div>
+              <div class="board-item b4"></div>
+              <div class="board-item b5"></div>
+            </div>
+            <div class="row">
+              <div class="board-item b6"></div>
+              <div class="board-item b7"></div>
+              <div class="board-item b8"></div>
+            </div>
+          </div>
+        </article>
+        <aside class="aside aside-1">
+          <img class="small-img" alt="Rick Grimes" src="assets/images/rick_grimes.png" />
+          <h2 class="player">Player <span class="red">1</span></h2>
+        </aside>
+        <aside class="aside aside-2">
+          <img class="small-img" alt="Zombie" src="assets/images/zombie.png" />
+          <h2 class="player">Player <span class="red">2</span></h2>
+        </aside>
+        <footer class="footer">
+            <button class="new-game" type="submit">New Game</button>
+        </footer>
+      </div>
+      <!-- END GAME BOARD -->
 
 
       <!-- START MODALS -->

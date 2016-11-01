@@ -115,39 +115,19 @@ h2 {
   // background: rgba(222, 231, 156, .3);
 }
 
-.b3,
-.b4,
-.b5,
-.b6,
-.b7,
-.b8 {
+.top-border {
   border-top: 2px dotted $black;
 }
 
-.b0,
-.b1,
-.b3,
-.b4,
-.b6,
-.b7 {
+.right-border {
   border-right: 2px dotted $black;
 }
 
-.b0,
-.b1,
-.b2,
-.b3,
-.b4,
-.b5 {
+.bottom-border {
   border-bottom: 2px dotted $black;
 }
 
-.b1,
-.b2,
-.b4,
-.b5,
-.b7,
-.b8 {
+.left-border {
   border-left: 2px dotted $black;
 }
 // END GAME BOARD STYLES

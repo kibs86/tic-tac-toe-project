@@ -13,6 +13,17 @@ const createGame = (data) =>
     },
   });
 
+const joinGame = (data) =>
+  $.ajax({
+    url: config.host + '/games/' + $('.player1-game').text(),
+    method: 'PATCH',
+    data,
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+    },
+  });
+
   module.exports = {
     createGame,
+    joinGame,
   };

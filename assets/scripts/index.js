@@ -6,7 +6,8 @@ const gameEvents = require('./game/events.js');
 $(()=>{
   authEvents.addHandlers();
 
-  gameEvents.addHandlers();
+  // enable game to be played once
+  gameEvents.addGameHandlers();
 
   $(".reset").click(function() {
         $("input").val("");

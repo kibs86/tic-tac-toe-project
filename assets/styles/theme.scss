@@ -133,20 +133,30 @@ h2 {
 // END GAME BOARD STYLES
 
 // START ASIDE STYLES
-.aside-1 {
-  // background: rgba(193, 154, 107, .5); */
+.aside {
   background: $grey-green;
   display: flex;
   flex: 0 1 100px;
+  flex-flow: column wrap;
   justify-content: center;
 }
 
-.aside-2 {
-  // background: rgba(193, 154, 107, .5); */
-  background: $grey-green;
-  display: flex;
-  flex: 0 1 100px;
-  justify-content: center;
+// .aside-2 {
+//   background: $grey-green;
+//   display: flex;
+//   flex: 0 1 100px;
+//   flex-flow: column wrap;
+//   justify-content: center;
+// }
+
+.player-div {
+  flex: 1 1 50%;
+  width: 100%;
+}
+
+.player-message-div {
+  flex: 1 1 50%;
+  width: 100%;
 }
 
 .small-img {
@@ -155,6 +165,14 @@ h2 {
   margin-top: 25px;
   width: 50px;
 }
+
+.create-game,
+.join-game {
+  border-radius: 28px;
+  font-family: $walter-turncoat;
+  font-size: 1em;
+}
+
 // END ASIDE STYLES
 
 // START MEDIA QUERY STYLES

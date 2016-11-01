@@ -9,11 +9,18 @@ const onSignUp = function (event) {
    event.preventDefault();
    let data = getFormFields(this);
    event.preventDefault();
-   debugger;
    api.signUp(data)
      .then(ui.success)
      .catch(ui.failure);
   };
+
+const onSignIn = function (event) {
+  let data = getFormFields(this);
+  event.preventDefault();
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.failure);
+};
 
 // test code
 // event.preventDefault();
@@ -28,6 +35,7 @@ const onSignUp = function (event) {
 
 const addHandlers = () => {
   $('.sign-up-form').on('submit', onSignUp);
+  $('.sign-in-form').on('submit', onSignIn);
 };
 
 module.exports = {

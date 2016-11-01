@@ -3,10 +3,11 @@
 const gameApi = require('./api');
 const gameUi = require('./ui');
 
+const globalJS = require('../global.js');
 
 // Can only create game if you've logged in
 const onCreateGame = function () {
-  if ($('.logged-in-as').text() !== "") {
+  if (globalJS.globalVars.playerLogin === true) {
     let data = '';
     gameApi.createGame(data)
       .then(gameUi.createGameSuccess)
@@ -18,7 +19,7 @@ const onCreateGame = function () {
 
 // Can only join game if one has already been created
 const onJoinGame = function () {
-  if (($('.logged-in-as').text() !== "") && ($('.player1-message').text() === "Successfully created")) {
+  if ((globalJS.globalVars.playerLogin === true) && (globalJS.globalVars.createGameSuccess === true)) {
     let data = '';
     gameApi.joinGame(data)
       .then(gameUi.joinGameSuccess)
@@ -28,14 +29,22 @@ const onJoinGame = function () {
   }
 };
 
-// const onTileClick = function () {
-//   console.log('you clicked a tile');
-// };
+const onTileClick = function () {
+  console.log('you clicked a tile');
+};
 
 const addGameHandlers = () => {
   $('.create-game').on('click', onCreateGame);
   $('.join-game').on('click', onJoinGame);
-  //$('.b0').on('click', onTileClick);
+  $('.b0').on('click', onTileClick);
+  $('.b1').on('click', onTileClick);
+  $('.b2').on('click', onTileClick);
+  $('.b3').on('click', onTileClick);
+  $('.b4').on('click', onTileClick);
+  $('.b5').on('click', onTileClick);
+  $('.b6').on('click', onTileClick);
+  $('.b7').on('click', onTileClick);
+  $('.b8').on('click', onTileClick);
 };
 
 module.exports = {

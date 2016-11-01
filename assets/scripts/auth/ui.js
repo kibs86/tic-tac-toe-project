@@ -1,6 +1,7 @@
 'use strict';
 
 const store = require('../store.js');
+const globalJS = require('../global.js');
 
 const hideAndClear = (modal) => {
   setTimeout(function() {
@@ -21,12 +22,16 @@ const signInSuccess = data => {
   store.user = data.user;
   $('.logged-in-as').text(data.user.email);
   $('.modal-success').text("SUCCESS!");
+  globalJS.globalVars.playerLogin = true;
+  console.log(globalJS.globalVars.playerLogin);
   console.log(data);
   hideAndClear('#sign-in-modal');
 };
 
 const signOutSuccess = data => {
   $('.modal-success').text("SUCCESS!");
+  globalJS.globalVars.playerLogin = false;
+  console.log(globalJS.globalVars.playerLogin);
   console.log(data);
   $('.logged-in-as').text('');
   hideAndClear('#sign-out-modal');

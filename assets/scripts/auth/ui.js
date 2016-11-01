@@ -25,6 +25,13 @@ const signInSuccess = data => {
   hideAndClear('#sign-in-modal');
 };
 
+const signOutSuccess = data => {
+  $('.modal-success').text("SUCCESS!");
+  console.log(data);
+  $('.logged-in-as').text('');
+  hideAndClear('#sign-out-modal');
+};
+
 const changePasswordSuccess = data => {
   $('.modal-success').text("SUCCESS!");
   console.log(data);
@@ -40,6 +47,7 @@ const failure = (error) => {
 module.exports = {
   signUpSuccess,
   signInSuccess,
+  signOutSuccess,
   changePasswordSuccess,
   failure,
 };

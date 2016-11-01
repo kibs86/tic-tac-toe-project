@@ -30,6 +30,13 @@ const onChangePassword = function (event) {
     .catch(ui.failure);
 };
 
+const onSignOut = function (event) {
+  event.preventDefault();
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.failure);
+};
+
 // test code
 // event.preventDefault();
 // $('.modal-success').text("SUCCESS!");
@@ -45,6 +52,7 @@ const addHandlers = () => {
   $('.sign-up-form').on('submit', onSignUp);
   $('.sign-in-form').on('submit', onSignIn);
   $('.change-password-form').on('submit', onChangePassword);
+  $('.sign-out-form').on('submit', onSignOut);
 };
 
 module.exports = {

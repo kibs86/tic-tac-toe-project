@@ -27,8 +27,18 @@ $.ajax({
   },
 });
 
+const signOut = () =>
+  $.ajax({
+    url: config.host + '/sign-out/' + store.user.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+    },
+});
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
+  signOut,
 };

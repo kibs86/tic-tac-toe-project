@@ -11,26 +11,35 @@ const hideAndClear = (modal) => {
     });
 };
 
-const success = (data) => {
+const signUpSuccess = (data) => {
   $('.modal-success').text("SUCCESS!");
   console.log(data);
   hideAndClear('#sign-up-modal');
-  hideAndClear('#sign-in-modal');
-};
-
-const failure = (error) => {
-  //$('').text("Failure");
-  console.error(error);
 };
 
 const signInSuccess = data => {
   store.user = data.user;
   $('.logged-in-as').text(data.user.email);
-  success(data);
+  $('.modal-success').text("SUCCESS!");
+  console.log(data);
+  hideAndClear('#sign-in-modal');
 };
 
+const changePasswordSuccess = data => {
+  $('.modal-success').text("SUCCESS!");
+  console.log(data);
+  hideAndClear('#change-password-modal');
+};
+
+const failure = (error) => {
+  $('.modal-success').text("FAILURE!");
+  console.error(error);
+};
+
+
 module.exports = {
-  success,
-  failure,
+  signUpSuccess,
   signInSuccess,
+  changePasswordSuccess,
+  failure,
 };

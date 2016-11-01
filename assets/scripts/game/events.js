@@ -29,24 +29,11 @@ const onJoinGame = function () {
   }
 };
 
-const onTileClick = function () {
-  console.log('you clicked a tile');
-};
-
-const addGameHandlers = () => {
+const addGameAPIHandlers = () => {
   $('.create-game').on('click', onCreateGame);
   $('.join-game').on('click', onJoinGame);
-  $('.b0').on('click', onTileClick);
-  $('.b1').on('click', onTileClick);
-  $('.b2').on('click', onTileClick);
-  $('.b3').on('click', onTileClick);
-  $('.b4').on('click', onTileClick);
-  $('.b5').on('click', onTileClick);
-  $('.b6').on('click', onTileClick);
-  $('.b7').on('click', onTileClick);
-  $('.b8').on('click', onTileClick);
 };
 
 module.exports = {
-  addGameHandlers,
+  addGameAPIHandlers,
 };

@@ -4,7 +4,8 @@
 const globalVars = {
   playerLogin: false,
   createGameSuccess: false,
-  newestGameID: 0
+  newestGameID: 0,
+  activePlayer: 'x'
 };
 
 module.exports = {

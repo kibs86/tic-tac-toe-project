@@ -82,24 +82,26 @@ const onTileClick = function () {
   // check for a winner - need to get it to print winner in correct location
   if (checkColWins(tileArray) || checkRowWins(tileArray) || checkDiagWins(tileArray)) {
     if (globalJS.globalVars.gameWinner === 'x') {
-      //$('.player1-message').text("CONGRATULATIONS! YOU WON IN " + globalJS.globalVars.turnCount + " TURNS!");
+      // print message to player1's side
       $('.player1-message').text("YOU WON IN " + globalJS.globalVars.turnCount + " TURNS!");
     } else {
-      $('.player2-message').html('CONGRATULATIONS!<br>YOU WON IN globalJS.globalVars.turnCount TURNS!');
+      // print message to player2's side
+      $('.player2-message').text("YOU WON IN " + globalJS.globalVars.turnCount + " TURNS!");
     }
+    // disable all click handlers
+    $('.board-item').css("pointer-events", "none");
+  } else {
+    // disable handler for just the tile that was clicked
+    $(tileID).css("pointer-events", "none");
+    // update active player
+    switchPlayer();
   }
 
-  // disable handler for tile that was just clicked
-  $(tileID).css("pointer-events", "none");
-
-  // update active player
-  switchPlayer();
-
-  // find out who won
-  // disable all click events if there's a winner
+  // disable clicks until a game is created and joined
   // update game API
   // new game button
     // global variables, player messages, game array, create game API
+    // remove data-owner attributes
 };
 
 // win check

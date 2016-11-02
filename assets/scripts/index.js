@@ -18,4 +18,9 @@ $(()=>{
   $(".reset").click(function() {
         $("input").val("");
     });
+
+  // disable board click events by default. they'll be enabled after a game
+  // has been created and joined
+  $('.board-item').css("pointer-events", "none");
+
 });

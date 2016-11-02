@@ -13,6 +13,7 @@ const createGameSuccess = (data) => {
 const joinGameSuccess = (data) => {
   $('.player2-message').text("Successfully joined");
   $('.player2-game').text("Game ID: " + data.game.id);
+  $('.board-item').css("pointer-events", "auto");
   console.log(data);
 };
 

@@ -115,11 +115,11 @@ h2 {
   // background: rgba(222, 231, 156, .3);
 }
 
-.x-background {
+[data-owner='x'] {
   background: no-repeat center / 60% url('../images/rick_grimes.png');
 }
 
-.o-background {
+[data-owner='o'] {
   background: no-repeat center / 60% url('../images/zombie.png');
 }
 

@@ -2,15 +2,11 @@
 
 //const globalJS = require('./global.js');
 //const gameEvents = require('./game/events.js');
+const app = require('./app.js');
 
-const onGetGameStats = function() {
-  //gameEvents(get)
-};
-
-const addGameStatHandlers = () => {
-  $('#get-stats').on('click', onGetGameStats);
-};
+let myVar = app.sumData;
+console.log(myVar);
 
 module.exports = {
-  addGameStatHandlers,
+
 };

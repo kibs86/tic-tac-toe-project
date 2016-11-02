@@ -35,6 +35,33 @@ const gameShowSuccess = (data) => {
   $('.get-stats-output').html(newData);
 };
 
+const gameSumStatsSuccess = (data) => {
+  app.sumData = data.games;
+  let totalGamesPlayed = data.games.length;
+  $('.sum-tot-games').text(totalGamesPlayed);
+  let openGames = 0;
+  let compGames = 0;
+  let playX = 0;
+  let playO = 0;
+  for (let i = 0; i < data.games.length; i++) {
+    if (data.games[i].over === true) {
+      compGames++;
+    } else {
+      openGames++;
+    }
+    if (data.games[i].player_x.email === globalJS.globalVars.playerEmail) {
+      playX++;
+    } else if (data.games[i].player_o.email === globalJS.globalVars.playerEmail) {
+      playO++;
+    }
+  }
+  $('.sum-tot-games-comp').text(compGames);
+  $('.sum-tot-games-open').text(openGames);
+  $('.sum-tot-games-px').text(playX);
+  $('.sum-tot-games-po').text(playO);
+
+};
+
 const createGameFailure = (error) => {
   $('.player1-message').text("Failed to create game");
   console.error(error);
@@ -61,6 +88,7 @@ module.exports = {
   joinGameSuccess,
   gameIndexSuccess,
   gameShowSuccess,
+  gameSumStatsSuccess,
   joinGameFailure,
   updateGameSuccess,
   updateGameFailure,

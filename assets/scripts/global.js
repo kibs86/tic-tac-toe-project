@@ -11,7 +11,7 @@ const globalVars = {
   gameOver: 'false',
   gameWinner: '',
   turnCount: 0,
-  gameData: {}
+  playerEmail: ''
 };
 
 module.exports = {

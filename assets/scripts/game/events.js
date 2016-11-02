@@ -50,11 +50,18 @@ const onGetStats = function (event) {
     }
 };
 
+const onGetSumStats = function(event) {
+  event.preventDefault();
+  gameApi.gameIndex()
+    .then(gameUi.gameSumStatsSuccess)
+    .catch(gameUi.gameStatsError);
+};
 
 const addGameAPIHandlers = () => {
   $('.create-game').on('click', onCreateGame);
   $('.join-game').on('click', onJoinGame);
   $('.get-stats-form').on('submit', onGetStats);
+  $('.get-sum-stats-form').on('submit', onGetSumStats);
 };
 
 

@@ -23,6 +23,7 @@ const signInSuccess = data => {
   $('.logged-in-as').text(data.user.email);
   $('.modal-success').text("SUCCESS!");
   globalJS.globalVars.playerLogin = true;
+  globalJS.globalVars.playerEmail = data.user.email;
   console.log(globalJS.globalVars.playerLogin);
   console.log(data);
   hideAndClear('#sign-in-modal');
@@ -31,6 +32,7 @@ const signInSuccess = data => {
 const signOutSuccess = data => {
   $('.modal-success').text("SUCCESS!");
   globalJS.globalVars.playerLogin = false;
+  globalJS.globalVars.playerEmail = '';
   console.log(globalJS.globalVars.playerLogin);
   console.log(data);
   $('.logged-in-as').text('');

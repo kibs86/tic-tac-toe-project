@@ -3,7 +3,7 @@
 const authEvents = require('./auth/events.js');
 const gameAPIEvents = require('./game/events.js');
 const gameBoard = require('./game.js');
-const gameStats = require('./game-stats.js');
+//const gameStats = require('./game-stats.js');
 
 $(()=>{
   // event handlers for login API
@@ -16,7 +16,7 @@ $(()=>{
   gameBoard.addBoardHandlers();
 
   // event handlers and logic for game stats
-  gameStats.addGameStatHandlers();
+  //gameStats.addGameStatHandlers();
 
   // clear out form data if user closes form instead of hitting submit
   $(".reset").click(function() {

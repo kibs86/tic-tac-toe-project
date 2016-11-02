@@ -36,17 +36,6 @@ const onSignOut = function (event) {
     .catch(ui.failure);
 };
 
-// test code
-// event.preventDefault();
-// $('.modal-success').text("SUCCESS!");
-// let coolBro = $('#sign-up-email').val();
-// console.log(coolBro);
-// setTimeout(function() {
-//   $('#sign-up-modal').modal('hide'); }, 3000);
-// $('#sign-up-modal').on('hidden.bs.modal', function () {
-//   $(this).find("input,textarea,select").val('').end();
-//   $('.modal-success').text('');
-
 const addHandlers = () => {
   $('.sign-up-form').on('submit', onSignUp);
   $('.sign-in-form').on('submit', onSignIn);
@@ -57,13 +46,3 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
 };
-
-/*
-$('.sign-up-form').on('submit', function(e){
-  e.preventDefault();
-  let coolBro = $('#sign-up-email').val();
-  console.log(coolBro);
-
-  $('#sign-up-modal').modal('hide');
-});
-  */

@@ -19,8 +19,9 @@ $(()=>{
         $("input").val("");
     });
 
-  // disable board click events by default. they'll be enabled after a game
-  // has been created and joined
+  // disable board click events and new game by default
+  // board clicks will be enabled after game has been created and joined
+  // new game will be enabled after a game has ended
   $('.board-item').css("pointer-events", "none");
-
+  $('.new-game').css("pointer-events", "none");
 });

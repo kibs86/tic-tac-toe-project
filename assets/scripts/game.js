@@ -90,12 +90,14 @@ const onTileClick = function () {
       $('.player2-message').text("YOU WON IN " + globalJS.globalVars.turnCount + " TURNS!");
     }
 
-    // disable all click handlers
+    // disable all click board item handlers
     $('.board-item').css("pointer-events", "none");
+
+    // enable new game button
+    $('.new-game').css("pointer-events", "auto");
 
     // update game over globalVar
     globalJS.globalVars.gameOver = "true";
-
 
   } else {
     // disable handler for just the tile that was clicked
@@ -105,8 +107,7 @@ const onTileClick = function () {
     switchPlayer();
   }
 
-  // update game state
-  // define data
+  // define data and update game state
   let data = {
     game: {
       cell: {
@@ -118,14 +119,36 @@ const onTileClick = function () {
   };
 
   gameEvents.updateGameState(data);
-
-  // new game button
-    // global variables, player messages, game array, create game API
-    // remove data-owner attributes
-    // global var game over
 };
 
-// win check
+// new game button
+const onNewGameClick = function () {
+  // reset global variables
+  // don't need to reset player login since they'll still be logged in
+  globalJS.globalVars.createGameSuccess = false;
+  globalJS.globalVars.newestGameID = 0;
+  globalJS.globalVars.activePlayer = 'x';
+  globalJS.globalVars.gameOver = 'false';
+  globalJS.globalVars.gameWinner = '';
+  globalJS.globalVars.turnCount = 0;
+
+  // reset player messages
+  $('.player2-message').text("PLEASE JOIN THE GAME TO PLAY!");
+
+  // reset game array
+  tileArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+  // remove data-owner attributes from board items
+  $('[data-owner]').removeAttr('data-owner');
+  // tile events should still be disabled - double check this
+
+  // disable new game click event
+  $('.new-game').css("pointer-events", "none");
+
+  // create new game as logged in user
+  gameEvents.onCreateGame();
+};
+
 
 const addBoardHandlers = () => {
   $('#b0').on('click', onTileClick);
@@ -137,6 +160,7 @@ const addBoardHandlers = () => {
   $('#b6').on('click', onTileClick);
   $('#b7').on('click', onTileClick);
   $('#b8').on('click', onTileClick);
+  $('.new-game').on('click', onNewGameClick);
 };
 
 module.exports = {

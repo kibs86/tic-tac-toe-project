@@ -44,4 +44,5 @@ const addGameAPIHandlers = () => {
 module.exports = {
   addGameAPIHandlers,
   updateGameState,
+  onCreateGame,
 };

@@ -36,20 +36,30 @@ const updateGameState = function (data) {
     .catch(gameUi.updateGameFailure);
 };
 
-const onGetGameStats = function (data) {
- // total games
- // completed games
- //
+const onGetStats = function (event) {
+  event.preventDefault();
+  let gameId = $('#get-stats').val();
+    if (gameId.length === 0){
+      gameApi.gameIndex()
+        .then(gameUi.gameIndexSuccess)
+        .catch(gameUi.gameStatsError);
+    } else {
+      gameApi.gameShow(gameId)
+        .then(gameUi.gameShowSuccess)
+        .catch(gameUi.gameStatsError);
+    }
 };
+
 
 const addGameAPIHandlers = () => {
   $('.create-game').on('click', onCreateGame);
   $('.join-game').on('click', onJoinGame);
+  $('.get-stats-form').on('submit', onGetStats);
 };
+
 
 module.exports = {
   addGameAPIHandlers,
   updateGameState,
   onCreateGame,
-  onGetGameStats,
 };

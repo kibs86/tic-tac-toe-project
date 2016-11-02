@@ -24,13 +24,6 @@ h2 {
 }
 // END GENERAL STYLES
 
-// START MODAL STYLES
-.modal-success {
-  color: $green;
-  font-size: 2em;
-}
-// END MODAL STYLES
-
 // START HEADER STYLES
 .header {
   // background: rgba(114, 140, 0, .6);
@@ -186,6 +179,12 @@ h2 {
 }
 
 // END ASIDE STYLES
+
+// START MODAL STYLES
+.get-stats-output {
+  font-family: 'courier new';
+}
+// END MODAL STYLES
 
 // START MEDIA QUERY STYLES
 @media all and (min-width: 400px) {

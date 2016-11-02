@@ -125,6 +125,7 @@
           <div class="player-message-div">
             <p class="player1-message"> PLEASE LOGIN AND <br> CLICK CREATE GAME TO PLAY! </p>
             <p class="player1-game"></p>
+            <!--<p class="get-stats-output"></p>-->
             <button class="create-game" type="button">Create Game</button>
           </div>
         </aside>
@@ -158,7 +159,6 @@
               <h4 class="modal-title" id="sign-in-modal-label">Sign In</h4>
             </div>
             <div class="modal-body">
-              <!-- KL - doesn't have class by default so we need to give it one-->
               <form class='sign-in-form'>
                 <div class="form-group">
                   <label for="sign-in-email">Email address</label>
@@ -281,8 +281,11 @@
               <form class='get-stats-form'>
                 <div class="form-group">
                   <label for="get-stats">Enter a game ID</label>
-                    <input type="password" name="game[ID]" class="form-control" id="get-stats" placeholder="Game ID" required="required">
-                  <p class="get-stats-output">...</p>
+                    <input type="text" name="game[ID]" class="form-control" id="get-stats" placeholder="Game ID">
+                  <pre>
+                    <code class="get-stats-output">
+                    </code>
+                  </pre>
                 </div>
                 <div class="modal-footer">
                   <p class="modal-success"></p>

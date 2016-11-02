@@ -1,18 +1,19 @@
 'use strict';
 
 const globalJS = require('../global.js');
+const app = require('../app.js');
 
 const createGameSuccess = (data) => {
+  app.game = data.game;
   $('.player1-message').text("Successfully created");
-  $('.player1-game').text("Game ID: " + data.game.id);
+  $('.player1-game').text("Game ID: " + app.game.id);
   globalJS.globalVars.createGameSuccess = true;
-  globalJS.globalVars.newestGameID = data.game.id;
   console.log(data);
 };
 
 const joinGameSuccess = (data) => {
   $('.player2-message').text("Successfully joined");
-  $('.player2-game').text("Game ID: " + data.game.id);
+  $('.player2-game').text("Game ID: " + app.game.id);
   $('.board-item').css("pointer-events", "auto");
   console.log(data);
 };
@@ -20,6 +21,18 @@ const joinGameSuccess = (data) => {
 const updateGameSuccess = (data) => {
   console.log("The game was successfully updated");
   console.log(data);
+};
+
+const gameIndexSuccess = (data) => {
+  let newData = JSON.stringify(data.games, null, '\t');
+  console.log(newData);
+  $('.get-stats-output').html(newData);
+};
+
+const gameShowSuccess = (data) => {
+  let newData = JSON.stringify(data.game, null, '\t');
+  console.log(newData);
+  $('.get-stats-output').html(newData);
 };
 
 const createGameFailure = (error) => {
@@ -37,15 +50,19 @@ const updateGameFailure = (error) => {
   console.error(error);
 };
 
-// new game needs to do the following
-// set createGameSuccess to false
-// create another new game
+const gameStatsError = (error) => {
+  console.error(error);
+};
+
 
 module.exports = {
   createGameSuccess,
   createGameFailure,
   joinGameSuccess,
+  gameIndexSuccess,
+  gameShowSuccess,
   joinGameFailure,
   updateGameSuccess,
   updateGameFailure,
+  gameStatsError,
 };

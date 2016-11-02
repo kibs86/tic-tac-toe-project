@@ -11,7 +11,7 @@ const onCreateGame = function () {
     let data = '';
     gameApi.createGame(data)
       .then(gameUi.createGameSuccess)
-      .catch(gameUi.failure);
+      .catch(gameUi.createGameFailure);
   } else {
     console.log('you need to sign in first');
   }
@@ -23,30 +23,25 @@ const onJoinGame = function () {
     let data = '';
     gameApi.joinGame(data)
       .then(gameUi.joinGameSuccess)
-      .catch(gameUi.failure);
+      .catch(gameUi.joinGameFailure);
   } else {
     console.log('player 1 needs to login and create a game first');
   }
 };
 
-const onTileClick = function () {
-  console.log('you clicked a tile');
+// Update game state.  Called from games.js
+const updateGameState = function (data) {
+  gameApi.updateGame(data)
+    .then(gameUi.updateGameSuccess)
+    .catch(gameUi.updateGameFailure);
 };
 
-const addGameHandlers = () => {
+const addGameAPIHandlers = () => {
   $('.create-game').on('click', onCreateGame);
   $('.join-game').on('click', onJoinGame);
-  $('.b0').on('click', onTileClick);
-  $('.b1').on('click', onTileClick);
-  $('.b2').on('click', onTileClick);
-  $('.b3').on('click', onTileClick);
-  $('.b4').on('click', onTileClick);
-  $('.b5').on('click', onTileClick);
-  $('.b6').on('click', onTileClick);
-  $('.b7').on('click', onTileClick);
-  $('.b8').on('click', onTileClick);
 };
 
 module.exports = {
-  addGameHandlers,
+  addGameAPIHandlers,
+  updateGameState,
 };

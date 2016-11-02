@@ -25,7 +25,18 @@ const joinGame = (data) =>
     },
   });
 
-  module.exports = {
-    createGame,
-    joinGame,
-  };
+const updateGame = (data) =>
+$.ajax({
+  url: config.host + '/games/' + globalJS.globalVars.newestGameID,
+  method: 'PATCH',
+  data,
+  headers: {
+    Authorization: 'Token token=' + store.user.token,
+  },
+});
+
+module.exports = {
+  createGame,
+  joinGame,
+  updateGame,
+};

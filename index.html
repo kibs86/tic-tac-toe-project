@@ -12,64 +12,79 @@
     <body class="container-fluid">
       <!-- NAVBAR STARS HERE -->
         <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!--<a class="navbar-brand" href="#">Tic-Tac-Toe</a>-->
-          <p class="navbar-brand"> Logged in as: <span class="logged-in-as"></span></p>
-          <!-- Button trigger modal -->
-        </div>
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <p class="navbar-brand"> Logged in as: <span class="logged-in-as"></span></p>
+              <!-- Button trigger modal -->
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <form class="navbar-form navbar-left">
-            <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#get-stats-modal">Get Statistics
-            </button>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign-In/Sign-Up <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sign-in-modal">
-                      Sign In
-                    </button>
-                  </a>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <!-- game stats dropdown -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Game Statistics <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#get-stats-modal">
+                          Game Stats
+                        </button>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#get-summary-stats-modal">
+                          Summary Stats
+                        </button>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
-                <li>
-                  <a>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sign-up-modal">
-                      Sign Up
-                    </button>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#change-password-modal">
-                      Change Password
-                    </button>
-                  </a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                  <a>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sign-out-modal">
-                      Sign Out
-                    </button>
-                  </a>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign-In/Sign-Up <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#sign-in-modal">
+                          Sign In
+                        </button>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#sign-up-modal">
+                          Sign Up
+                        </button>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#change-password-modal">
+                          Change Password
+                        </button>
+                      </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                      <a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#sign-out-modal">
+                          Sign Out
+                        </button>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
         </nav>
       <!-- NAVBAR ENDS HERE -->
 
@@ -255,24 +270,68 @@
       <!-- END SIGN OUT MODAL -->
 
       <!-- START GET STATS MODAL -->
-      <!-- Modal -->
       <div class="modal fade" id="get-stats-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="get-stats-modal-Label">User Statistics</h4>
+              <h4 class="modal-title" id="get-stats-modal-label">Get Statistics</h4>
             </div>
             <div class="modal-body">
-              <p> ... </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <form class='get-stats-form'>
+                <div class="form-group">
+                  <label for="get-stats">Enter a game ID</label>
+                    <input type="password" name="game[ID]" class="form-control" id="get-stats" placeholder="Game ID" required="required">
+                  <p class="get-stats-output">...</p>
+                </div>
+                <div class="modal-footer">
+                  <p class="modal-success"></p>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
       <!-- END GET STATS MODAL -->
+
+      <!-- START SUMMARY GET STATS MODAL -->
+      <div class="modal fade" id="get-summary-stats-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="get-summary-stats-modal-label">Summary Stats</h4>
+            </div>
+            <div class="modal-body">
+              <form class='get-stats-form'>
+                <div class="form-group">
+                  <p>
+                    User: <span class="sum-user"> ... </span>
+                    <br>
+                    Total Games Played: <span class="sum-tot-games"> ... </span>
+                    <br>
+                    Total Games Completed: <span class="sum-tot-games-comp"> ... </span>
+                    <br>
+                    Total Games Still Open: <span class="sum-tot-games-open"> ... </span>
+                    <br>
+                    Total Games Played as Player X: <span class="sum-tot-games-px"> ... </span>
+                    <br>
+                    Total Games Played as Player O: <span class="sum-tot-games-po"> ... </span>
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <p class="modal-success"></p>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END GET SUMMARY STATS MODAL -->
 
       <!-- END MODALS -->
     </body>

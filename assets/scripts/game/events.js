@@ -36,6 +36,12 @@ const updateGameState = function (data) {
     .catch(gameUi.updateGameFailure);
 };
 
+const onGetGameStats = function (data) {
+ // total games
+ // completed games
+ //
+};
+
 const addGameAPIHandlers = () => {
   $('.create-game').on('click', onCreateGame);
   $('.join-game').on('click', onJoinGame);
@@ -45,4 +51,5 @@ module.exports = {
   addGameAPIHandlers,
   updateGameState,
   onCreateGame,
+  onGetGameStats,
 };

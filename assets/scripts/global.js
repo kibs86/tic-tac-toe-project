@@ -8,6 +8,7 @@ const globalVars = {
   createGameSuccess: false,
   newestGameID: 0,
   activePlayer: 'x',
+  gameOver: 'false',
   gameWinner: '',
   turnCount: 0
 };

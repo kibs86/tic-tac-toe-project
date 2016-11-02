@@ -17,6 +17,11 @@ const joinGameSuccess = (data) => {
   console.log(data);
 };
 
+const updateGameSuccess = (data) => {
+  console.log("The game was successfully updated");
+  console.log(data);
+};
+
 const createGameFailure = (error) => {
   $('.player1-message').text("Failed to create game");
   console.error(error);
@@ -24,6 +29,11 @@ const createGameFailure = (error) => {
 
 const joinGameFailure = (error) => {
   $('.player2-message').text("Failed to join game");
+  console.error(error);
+};
+
+const updateGameFailure = (error) => {
+  console.log("update game failed");
   console.error(error);
 };
 
@@ -36,4 +46,6 @@ module.exports = {
   createGameFailure,
   joinGameSuccess,
   joinGameFailure,
+  updateGameSuccess,
+  updateGameFailure,
 };

@@ -11,7 +11,7 @@ const onCreateGame = function () {
     let data = '';
     gameApi.createGame(data)
       .then(gameUi.createGameSuccess)
-      .catch(gameUi.failure);
+      .catch(gameUi.createGameFailure);
   } else {
     console.log('you need to sign in first');
   }
@@ -23,10 +23,17 @@ const onJoinGame = function () {
     let data = '';
     gameApi.joinGame(data)
       .then(gameUi.joinGameSuccess)
-      .catch(gameUi.failure);
+      .catch(gameUi.joinGameFailure);
   } else {
     console.log('player 1 needs to login and create a game first');
   }
+};
+
+// Update game state.  Called from games.js
+const updateGameState = function (data) {
+  gameApi.updateGame(data)
+    .then(gameUi.updateGameSuccess)
+    .catch(gameUi.updateGameFailure);
 };
 
 const addGameAPIHandlers = () => {
@@ -36,4 +43,5 @@ const addGameAPIHandlers = () => {
 
 module.exports = {
   addGameAPIHandlers,
+  updateGameState,
 };

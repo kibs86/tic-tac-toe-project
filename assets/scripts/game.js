@@ -1,6 +1,7 @@
 'use strict';
 
 const globalJS = require('./global.js');
+const gameEvents = require('./game/events.js');
 
 let tileArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -88,20 +89,40 @@ const onTileClick = function () {
       // print message to player2's side
       $('.player2-message').text("YOU WON IN " + globalJS.globalVars.turnCount + " TURNS!");
     }
+
     // disable all click handlers
     $('.board-item').css("pointer-events", "none");
+
+    // update game over globalVar
+    globalJS.globalVars.gameOver = "true";
+
+
   } else {
     // disable handler for just the tile that was clicked
     $(tileID).css("pointer-events", "none");
+
     // update active player
     switchPlayer();
   }
 
-  // disable clicks until a game is created and joined
-  // update game API
+  // update game state
+  // define data
+  let data = {
+    game: {
+      cell: {
+        index: tileIndex,
+        value: tileArray[tileIndex]
+      },
+      over: globalJS.globalVars.gameOver
+    }
+  };
+
+  gameEvents.updateGameState(data);
+
   // new game button
     // global variables, player messages, game array, create game API
     // remove data-owner attributes
+    // global var game over
 };
 
 // win check

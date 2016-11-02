@@ -52,6 +52,8 @@ const checkDiagWins = function(tileArray) {
   } else if ((tileArray[2] === tileArray[4]) && (tileArray[2] === tileArray[6])) {
       globalJS.globalVars.gameWinner = tileArray[2];
       return true;
+    } else {
+      return false;
     }
 };
 
@@ -66,6 +68,17 @@ const setOwner = function(tileID, tileIndex) {
 
   return tileArray;
 
+};
+
+const gameOver = function () {
+  // disable all click board item handlers
+  $('.board-item').css("pointer-events", "none");
+
+  // enable new game button
+  $('.new-game').css("pointer-events", "auto");
+
+  // update game over globalVar
+  globalJS.globalVars.gameOver = "true";
 };
 
 const onTileClick = function () {
@@ -90,14 +103,16 @@ const onTileClick = function () {
       $('.player2-message').text("YOU WON IN " + globalJS.globalVars.turnCount + " TURNS!");
     }
 
-    // disable all click board item handlers
-    $('.board-item').css("pointer-events", "none");
+    gameOver();
 
-    // enable new game button
-    $('.new-game').css("pointer-events", "auto");
+  } else if ((globalJS.globalVars.gameWinner === '') && (globalJS.globalVars.turnCount === 9)) {
+    // print message to both sides
+    console.log(globalJS.globalVars.gameWinner);
+    console.log(globalJS.globalVars.turnCount);
+    $('.player1-message').text("IT'S A TIE!");
+    $('.player2-message').text("IT'S A TIE!");
 
-    // update game over globalVar
-    globalJS.globalVars.gameOver = "true";
+    gameOver();
 
   } else {
     // disable handler for just the tile that was clicked
@@ -121,8 +136,7 @@ const onTileClick = function () {
   gameEvents.updateGameState(data);
 };
 
-// new game button
-const onNewGameClick = function () {
+const onClearBoard = function () {
   // reset global variables
   // don't need to reset player login since they'll still be logged in
   globalJS.globalVars.createGameSuccess = false;
@@ -133,6 +147,7 @@ const onNewGameClick = function () {
   globalJS.globalVars.turnCount = 0;
 
   // reset player messages
+  $('.player1-message').html("PLEASE LOGIN AND <br> CLICK CREATE GAME TO PLAY!");
   $('.player2-message').text("PLEASE JOIN THE GAME TO PLAY!");
 
   // reset game array
@@ -144,8 +159,10 @@ const onNewGameClick = function () {
 
   // disable new game click event
   $('.new-game').css("pointer-events", "none");
+};
 
-  // create new game as logged in user
+const onNewGameClick = function () {
+  onClearBoard();
   gameEvents.onCreateGame();
 };
 
@@ -161,6 +178,7 @@ const addBoardHandlers = () => {
   $('#b7').on('click', onTileClick);
   $('#b8').on('click', onTileClick);
   $('.new-game').on('click', onNewGameClick);
+  $('.clear-board').on('click', onClearBoard);
 };
 
 module.exports = {

@@ -170,8 +170,8 @@ const onClearBoard = function () {
   globalJS.globalVars.turnCount = 0;
 
   // Reset player messages
-  $('.player1-message').html("PLEASE LOGIN AND <br> CLICK CREATE GAME TO PLAY!");
-  $('.player2-message').text("PLEASE JOIN THE GAME TO PLAY!");
+  $('.player1-message').html(globalJS.globalVars.p1DefMess);
+  $('.player2-message').html(globalJS.globalVars.p2DefMess);
 
   // Reset game array
   tileArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -189,6 +189,16 @@ const onNewGameClick = function () {
   gameEvents.onCreateGame();
 };
 
+// Allows user to play against a "null" player 2
+const onPlayNow = function () {
+  if ((globalJS.globalVars.playerLogin === true) && (globalJS.globalVars.createGameSuccess === true)) {
+    $('.board-item').css("pointer-events", "auto");
+    $('.player2-message').text("Have fun!");
+  } else {
+    $('.player2-message').text("A game needs to be created first.");
+  }
+};
+
 // Separate click handlers for each board item (tile)
 const addBoardHandlers = () => {
   $('#b0').on('click', onTileClick);
@@ -202,6 +212,7 @@ const addBoardHandlers = () => {
   $('#b8').on('click', onTileClick);
   $('.new-game').on('click', onNewGameClick);
   $('.clear-board').on('click', onClearBoard);
+  $('.play-now').on('click', onPlayNow);
 };
 
 module.exports = {

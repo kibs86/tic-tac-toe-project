@@ -11,6 +11,8 @@ const createGameSuccess = (data) => {
   $('.player1-message').text("Successfully created");
   //$('.player1-game').text("Game ID: " + app.game.id);
   globalJS.globalVars.createGameSuccess = true;
+  $('.join-game').css("pointer-events", "auto");
+  $('.play-now').css("pointer-events", "auto");
 };
 
 // When game is successfully joined, let player know they've joined

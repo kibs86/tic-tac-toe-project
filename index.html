@@ -5,12 +5,13 @@
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="dependencies.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Schoolbell|Walter+Turncoat" rel="stylesheet">
     </head>
     <body class="container-fluid">
-      <!-- NAVBAR STARS HERE -->
+
+      <!-- BOOTSTRAP NAVBAR STARS HERE -->
         <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,7 +25,6 @@
               <p class="navbar-brand"> Logged in as: <span class="logged-in-as"></span></p>
               <!-- Button trigger modal -->
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
@@ -123,9 +123,8 @@
             <h2 class="player">Player <span class="red">1</span></h2>
           </div>
           <div class="player-message-div">
-            <p class="player1-message"> PLEASE LOGIN AND <br> CLICK CREATE GAME TO PLAY! </p>
+            <p class="player1-message"> Please login and <br> click create game! </p>
             <p class="player1-game"></p>
-            <!--<p class="get-stats-output"></p>-->
             <button class="create-game" type="button">Create Game</button>
           </div>
         </aside>
@@ -135,9 +134,10 @@
             <h2 class="player">Player <span class="red">2</span></h2>
           </div>
           <div class="player-message-div">
-            <p class="player2-message"> PLEASE JOIN THE <br> GAME TO PLAY! </p>
+            <p class="player2-message"> Login and click Join <br> or click Play Now</p>
             <p class="player2-game"></p>
-            <button class="join-game" type="submit">Join Game</button>
+            <button class="join-game" type="submit">Join Game</button> OR
+            <button class="play-now" type="submit">Play Now</button>
           </div>
         </aside>
         <footer class="footer">
@@ -149,7 +149,6 @@
 
 
       <!-- START MODALS -->
-      <!-- KL - need to change ID so we can use multiple modals -->
       <!-- START SIGN IN MODAL -->
       <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -161,11 +160,11 @@
             <div class="modal-body">
               <form class='sign-in-form'>
                 <div class="form-group">
-                  <label for="sign-in-email">Email address</label>
+                  <label for="sign-in-email">Email address<span class="asterisk">*</span></label>
                     <input type="email" name="credentials[email]" class="form-control" id="sign-in-email" placeholder="Email" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="sign-in-password">Password</label>
+                  <label for="sign-in-password">Password<span class="asterisk">*</span></label>
                   <input type="password" name="credentials[password]" class="form-control" id="sign-in-password" placeholder="Password" required="required">
                 </div>
                 <div class="modal-footer">
@@ -191,15 +190,15 @@
             <div class="modal-body">
               <form class='sign-up-form'>
                 <div class="form-group">
-                  <label for="sign-up-email">Email address</label>
+                  <label for="sign-up-email">Email address<span class="asterisk">*</span></label>
                     <input type="email" name="credentials[email]" class="form-control" id="sign-up-email" placeholder="Email" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="sign-up-password">Password</label>
+                  <label for="sign-up-password">Password<span class="asterisk">*</span></label>
                   <input type="password" name="credentials[password]" class="form-control" id="sign-up-password" placeholder="Password" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="sign-up-confirm-password">Confirm Password</label>
+                  <label for="sign-up-confirm-password">Confirm Password<span class="asterisk">*</span></label>
                   <input type="password" name="credentials[password_confirmation]" class="form-control" id="sign-up-confirm-password" placeholder="Confirm Password" required="required">
                 </div>
                 <div class="modal-footer">
@@ -225,11 +224,11 @@
             <div class="modal-body">
               <form class='change-password-form'>
                 <div class="form-group">
-                  <label for="change-password-old">Old Password</label>
+                  <label for="change-password-old">Old Password<span class="asterisk">*</span></label>
                     <input type="password" name="passwords[old]" class="form-control" id="change-password-old" placeholder="Old Password" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="change-password-new">New Password</label>
+                  <label for="change-password-new">New Password<span class="asterisk">*</span></label>
                   <input type="password" name="passwords[new]" class="form-control" id="change-password-new" placeholder="New Password" required="required">
                 </div>
                 <div class="modal-footer">
@@ -310,17 +309,32 @@
             <div class="modal-body">
               <form class='get-sum-stats-form'>
                 <div class="form-group">
-                  <p>
-                    Total Games Played: <span class="sum-tot-games"> ... </span>
-                    <br>
-                    Total Games Completed: <span class="sum-tot-games-comp"> ... </span>
-                    <br>
-                    Total Games Still Open: <span class="sum-tot-games-open"> ... </span>
-                    <br>
-                    Total Games Played as Player X: <span class="sum-tot-games-px"> ... </span>
-                    <br>
-                    Total Games Played as Player O: <span class="sum-tot-games-po"> ... </span>
-                  </p>
+                  <table class="stats-table">
+                    <tr>
+                      <th> Statistic </th>
+                      <th> Value </th>
+                    </tr>
+                    <tr>
+                      <td> Total Games Played </td>
+                      <td class="sum-tot-games"> </td>
+                    </tr>
+                    <tr>
+                      <td> Total Games Completed </td>
+                      <td class="sum-tot-games-comp"></td>
+                    </tr>
+                    <tr>
+                      <td> Total Games Still Open </td>
+                      <td class="sum-tot-games-open"></td>
+                    </tr>
+                    <tr>
+                      <td> Total Games Played as Player X </td>
+                      <td class="sum-tot-games-px"></td>
+                    </tr>
+                    <tr>
+                      <td> Total Games Played as Player O </td>
+                      <td class="sum-tot-games-po"></td>
+                    </tr>
+                  </table>
                 </div>
                 <div class="modal-footer">
                   <p class="modal-success"></p>

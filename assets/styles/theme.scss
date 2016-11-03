@@ -108,7 +108,6 @@ h2 {
 .board-item {
   flex: 0 0 100px;
   height: 100px;
-  // background: rgba(222, 231, 156, .3);
 }
 
 [data-owner='x'] {
@@ -134,7 +133,6 @@ h2 {
 .left-border {
   border-left: 2px dotted $black;
 }
-
 // END GAME BOARD STYLES
 
 // START ASIDE STYLES
@@ -146,21 +144,15 @@ h2 {
   justify-content: center;
 }
 
-// .aside-2 {
-//   background: $grey-green;
-//   display: flex;
-//   flex: 0 1 100px;
-//   flex-flow: column wrap;
-//   justify-content: center;
-// }
-
 .player-div {
-  flex: 1 1 50%;
+  flex: 1 1 20%;
+  order: 1;
   width: 100%;
 }
 
 .player-message-div {
-  flex: 1 1 50%;
+  flex: 1 1 20%;
+  order: 2;
   width: 100%;
 }
 
@@ -172,23 +164,62 @@ h2 {
 }
 
 .create-game,
-.join-game {
+.join-game,
+.play-now {
   border-radius: 28px;
   font-family: $walter-turncoat;
   font-size: 1em;
 }
-
 // END ASIDE STYLES
 
 // START MODAL STYLES
+.asterisk {
+  color: $red;
+}
+
 .get-stats-output {
   font-family: 'courier new';
 }
+
+.modal-dialog {
+  overflow-y: initial;
+}
+
+.modal-body {
+  height: 350px;
+  overflow-y: auto;
+}
+
+table {
+  width: 75%;
+}
+
+th {
+  background-color: $red;
+  color: $white;
+  font-size: 1.2em;
+  font-weight: bolder;
+  height: 20px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+tr {
+  padding-left: 10px;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: $grey;
+}
+
 // END MODAL STYLES
 
 // START MEDIA QUERY STYLES
 @media all and (min-width: 400px) {
   .aside { flex: 1 50%; }
+  .player-div { order: 1; }
+  .player-message-dev { order: 2; }
 }
 
 @media all and (min-width: 700px) {

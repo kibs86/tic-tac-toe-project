@@ -4,7 +4,7 @@ const config = require('../config.js');
 const store = require('../store.js');
 const app = require('../app.js');
 
-const globalJS = require('../global.js');
+//const globalJS = require('../global.js');
 
 // Ajax request to create a new game
 const createGame = (data) =>
@@ -31,7 +31,7 @@ const joinGame = (data) =>
 // Ajax request to update the game state
 const updateGame = (data) =>
 $.ajax({
-  url: config.host + '/games/' + globalJS.globalVars.newestGameID,
+  url: config.host + '/games/' + app.game.id,
   method: 'PATCH',
   data,
   headers: {

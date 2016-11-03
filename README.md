@@ -52,14 +52,14 @@ organized so I decided to build out features in the order they'd be used by a
 user:
 
 1. Base UI
-2. Login functionality - signup, login, change password, sign out (in that order)
-3. Create a new game
-4. Game logic to handle playing the game and updating the game state
-5. Game logic to handle what happens when somebody wins (or ties)
-6. Game logic to handle clearing the board so a new one can be played
-7. Get game statistics (including new modals and API calls)
-8. Revisited the UI to make it usable on smaller screens
-9. Went through everything to remove any unnecessary console log statements,
+1. Login functionality - signup, login, change password, sign out (in that order)
+1. Create a new game
+1. Game logic to handle playing the game and updating the game state
+1. Game logic to handle what happens when somebody wins (or ties)
+1. Game logic to handle clearing the board so a new one can be played
+1. Get game statistics (including new modals and API calls)
+1. Revisited the UI to make it usable on smaller screens
+1. Went through everything to remove any unnecessary console log statements,
 print out user friendly messages to give them feedback on successes/failures,
 and general formatting fixes to make everything look a little nicer.
 ```
@@ -94,21 +94,19 @@ if they log in.  If they click "Play Now" then it breaks the current game and
 the New Game button has to be clicked to fix it.
 
 ## Wireframes
-```md
 Web images:
 [Tic-Tac-Toe Web Pg. 1](http://imgur.com/UepNPW9 "Tic Tac Toe Web Page 1")
 [Tic-Tac-Toe Web Pg. 2](http://imgur.com/21dwbm2 "Tic Tac Toe Web Page 2")
 
 Mobile image:
 [Tic-Tac-Toe Mobile](http://imgur.com/YyMZ14x "Tic Tac Toe Mobile")
-```
 
 ## User Stories
 ```md
 I've never written user stories before, but below are some I attempted:
-1. As a user, I want a game that allows me to create an account so I can save my games.
-2. As a user, I want to be able to change my password so I can keep my account more secure.
-3. As a user, I would like the ability to play against another person.
-4. As a user, I would like the ability to retreive my game statistics.
-5. As a user, I would like the abilty to play a new game as soon as one ends.
+* As a user, I want a game that allows me to create an account so I can save my games.
+* As a user, I want to be able to change my password so I can keep my account more secure.
+* As a user, I would like the ability to play against another person.
+* As a user, I would like the ability to retreive my game statistics.
+* As a user, I would like the abilty to play a new game as soon as one ends.
 ```

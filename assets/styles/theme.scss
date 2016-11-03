@@ -175,6 +175,16 @@ h2 {
 .get-stats-output {
   font-family: 'courier new';
 }
+
+.modal-dialog {
+  overflow-y: initial
+}
+
+.modal-body {
+  height: 350px;
+  overflow-y: auto;
+}
+
 // END MODAL STYLES
 
 // START MEDIA QUERY STYLES

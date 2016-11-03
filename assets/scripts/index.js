@@ -21,9 +21,12 @@ $(()=>{
         $(".get-stats-output").text("");
     });
 
-  // disable board click events and new game by default
+  // disable board click events, new game, join game and play now
+  // join game and play now will be enabled after a game has been created
   // board clicks will be enabled after game has been created and joined
   // new game will be enabled after a game has ended
   $('.board-item').css("pointer-events", "none");
   $('.new-game').css("pointer-events", "none");
+  $('.join-game').css("pointer-events", "none");
+  $('.play-now').css("pointer-events", "none");
 });

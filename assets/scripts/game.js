@@ -1,12 +1,16 @@
 'use strict';
 
+// globalJS contains a global object to store things I need to reference across
+// files for my game logic
 const globalJS = require('./global.js');
 const gameEvents = require('./game/events.js');
 
+// create array to store board items as they're clicked
 let tileArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
+// Switch the active player
+// Called at end of tile click function
 const switchPlayer = function () {
-  console.log('current player is ' + globalJS.globalVars.activePlayer);
   if (globalJS.globalVars.activePlayer === 'x') {
     globalJS.globalVars.activePlayer = 'o';
   } else {
@@ -14,8 +18,9 @@ const switchPlayer = function () {
   }
 };
 
+// Check for horizontal wins
+// Called within tile click function
 const checkRowWins = function(tileArray) {
-  console.log(tileArray);
   if ((tileArray[0] === tileArray[1]) && (tileArray[0] === tileArray[2])) {
     globalJS.globalVars.gameWinner = tileArray[0];
     return true;
@@ -30,6 +35,8 @@ const checkRowWins = function(tileArray) {
     }
 };
 
+// Check for vertical wins
+// Called within tile click function
 const checkColWins = function(tileArray) {
   if ((tileArray[0] === tileArray[3]) && (tileArray[0] === tileArray[6])) {
     globalJS.globalVars.gameWinner = tileArray[0];
@@ -45,6 +52,8 @@ const checkColWins = function(tileArray) {
     }
 };
 
+// Check for diagonal wins
+// Called within tile click function
 const checkDiagWins = function(tileArray) {
   if ((tileArray[0] === tileArray[4]) && (tileArray[0] === tileArray[8])) {
     globalJS.globalVars.gameWinner = tileArray[0];
@@ -52,9 +61,15 @@ const checkDiagWins = function(tileArray) {
   } else if ((tileArray[2] === tileArray[4]) && (tileArray[2] === tileArray[6])) {
       globalJS.globalVars.gameWinner = tileArray[2];
       return true;
+    } else {
+      return false;
     }
 };
 
+// Set owner of tile using data attributes
+// Data attributes pre-defined in theme.scss file to update background image
+// Push owner of tile into correct spot within tileArray
+// Called within tile click function
 const setOwner = function(tileID, tileIndex) {
   if (globalJS.globalVars.activePlayer === 'x') {
     $(tileID).attr('data-owner', 'x');
@@ -68,19 +83,38 @@ const setOwner = function(tileID, tileIndex) {
 
 };
 
+// Perform a few activities after game has ended (via winner or tie)
+// Called within tile click function
+const gameOver = function () {
+  // disable all click board item handlers
+  $('.board-item').css("pointer-events", "none");
+
+  // enable new game button
+  $('.new-game').css("pointer-events", "auto");
+
+  // update game over globalVar
+  globalJS.globalVars.gameOver = "true";
+};
+
+// Main game logic
+// Makes calls up to above functions for some parts
 const onTileClick = function () {
-  // find ID and index of tile that was clicked
+
+  // Get the ID of the tile that was clicked
+  // Pull the correct array index off of the ID
   let tile = $(this).attr('id');
   let tileID = '#' + tile;
   let tileIndex = tile[tile.length - 1];
 
-  // increment turn count. need to test that this is in the right place
+  // Increment turn count
+  // Used for display purposes when somebody wins (ex. you won in x turns)
+  // Used for checking a tie
   globalJS.globalVars.turnCount++;
 
-  // change background of tile and store owner
+  // Change background of tile and store owner
   tileArray = setOwner(tileID, tileIndex);
 
-  // check for a winner - need to get it to print winner in correct location
+  // Check for a winner
   if (checkColWins(tileArray) || checkRowWins(tileArray) || checkDiagWins(tileArray)) {
     if (globalJS.globalVars.gameWinner === 'x') {
       // print message to player1's side
@@ -90,23 +124,27 @@ const onTileClick = function () {
       $('.player2-message').text("YOU WON IN " + globalJS.globalVars.turnCount + " TURNS!");
     }
 
-    // disable all click handlers
-    $('.board-item').css("pointer-events", "none");
+    // If there's a winner, run the gameOver function
+    gameOver();
 
-    // update game over globalVar
-    globalJS.globalVars.gameOver = "true";
+    // Check for a tie (no winners, but turnCount is at max)
+  } else if ((globalJS.globalVars.gameWinner === '') && (globalJS.globalVars.turnCount === 9)) {
+    // Print tie message to both sides
+    $('.player1-message').text("IT'S A TIE!");
+    $('.player2-message').text("IT'S A TIE!");
 
+    gameOver();
 
   } else {
-    // disable handler for just the tile that was clicked
+    // If the game isn't over
+    // Disable handler for just the tile that was clicked
     $(tileID).css("pointer-events", "none");
 
-    // update active player
+    // Update active player
     switchPlayer();
   }
 
-  // update game state
-  // define data
+  // Define data and pass it through to my game API to update game state
   let data = {
     game: {
       cell: {
@@ -118,15 +156,40 @@ const onTileClick = function () {
   };
 
   gameEvents.updateGameState(data);
-
-  // new game button
-    // global variables, player messages, game array, create game API
-    // remove data-owner attributes
-    // global var game over
 };
 
-// win check
+// Clear board button will reset everything, but won't start a new game
+const onClearBoard = function () {
+  // Reset global variables
+  // Don't need to reset player login since they'll still be logged in
+  globalJS.globalVars.createGameSuccess = false;
+  globalJS.globalVars.newestGameID = 0;
+  globalJS.globalVars.activePlayer = 'x';
+  globalJS.globalVars.gameOver = 'false';
+  globalJS.globalVars.gameWinner = '';
+  globalJS.globalVars.turnCount = 0;
 
+  // Reset player messages
+  $('.player1-message').html("PLEASE LOGIN AND <br> CLICK CREATE GAME TO PLAY!");
+  $('.player2-message').text("PLEASE JOIN THE GAME TO PLAY!");
+
+  // Reset game array
+  tileArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+  // Remove data-owner attributes from board items
+  $('[data-owner]').removeAttr('data-owner');
+
+  // Disable new game click event
+  $('.new-game').css("pointer-events", "none");
+};
+
+// New Game button resets everything like the clear button does, but also creates a new game
+const onNewGameClick = function () {
+  onClearBoard();
+  gameEvents.onCreateGame();
+};
+
+// Separate click handlers for each board item (tile)
 const addBoardHandlers = () => {
   $('#b0').on('click', onTileClick);
   $('#b1').on('click', onTileClick);
@@ -137,10 +200,10 @@ const addBoardHandlers = () => {
   $('#b6').on('click', onTileClick);
   $('#b7').on('click', onTileClick);
   $('#b8').on('click', onTileClick);
+  $('.new-game').on('click', onNewGameClick);
+  $('.clear-board').on('click', onClearBoard);
 };
 
 module.exports = {
   addBoardHandlers,
 };
-
-//module.exports = true;

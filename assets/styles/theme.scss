@@ -24,13 +24,6 @@ h2 {
 }
 // END GENERAL STYLES
 
-// START MODAL STYLES
-.modal-success {
-  color: $green;
-  font-size: 2em;
-}
-// END MODAL STYLES
-
 // START HEADER STYLES
 .header {
   // background: rgba(114, 140, 0, .6);
@@ -74,10 +67,13 @@ h2 {
   background: $light-red;
 }
 
-.new-game {
+.new-game,
+.clear-board {
   border-radius: 28px;
   font-family: $walter-turncoat;
   font-size: 1em;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 // END FOOTER STYLES
 
@@ -183,6 +179,12 @@ h2 {
 }
 
 // END ASIDE STYLES
+
+// START MODAL STYLES
+.get-stats-output {
+  font-family: 'courier new';
+}
+// END MODAL STYLES
 
 // START MEDIA QUERY STYLES
 @media all and (min-width: 400px) {

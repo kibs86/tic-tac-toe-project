@@ -5,6 +5,7 @@ const getFormFields = require(`../../../lib/get-form-fields`);
 const api = require('./api');
 const ui = require('./ui');
 
+// Allows a new user to sign up
 const onSignUp = function (event) {
    event.preventDefault();
    let data = getFormFields(this);
@@ -13,6 +14,7 @@ const onSignUp = function (event) {
      .catch(ui.failure);
   };
 
+// Allows an existing user to login
 const onSignIn = function (event) {
   let data = getFormFields(this);
   event.preventDefault();
@@ -21,6 +23,7 @@ const onSignIn = function (event) {
     .catch(ui.failure);
 };
 
+// Allows a user to change their password
 const onChangePassword = function (event) {
   let data = getFormFields(this);
   event.preventDefault();
@@ -29,23 +32,13 @@ const onChangePassword = function (event) {
     .catch(ui.failure);
 };
 
+// Allows a user to sign out
 const onSignOut = function (event) {
   event.preventDefault();
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.failure);
 };
-
-// test code
-// event.preventDefault();
-// $('.modal-success').text("SUCCESS!");
-// let coolBro = $('#sign-up-email').val();
-// console.log(coolBro);
-// setTimeout(function() {
-//   $('#sign-up-modal').modal('hide'); }, 3000);
-// $('#sign-up-modal').on('hidden.bs.modal', function () {
-//   $(this).find("input,textarea,select").val('').end();
-//   $('.modal-success').text('');
 
 const addHandlers = () => {
   $('.sign-up-form').on('submit', onSignUp);
@@ -57,13 +50,3 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
 };
-
-/*
-$('.sign-up-form').on('submit', function(e){
-  e.preventDefault();
-  let coolBro = $('#sign-up-email').val();
-  console.log(coolBro);
-
-  $('#sign-up-modal').modal('hide');
-});
-  */

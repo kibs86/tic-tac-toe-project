@@ -3,6 +3,7 @@
 const config = require('../config.js');
 const store = require('../store.js');
 
+// Ajax request for a new user sign up
 const signUp = (data) =>
   $.ajax({
     url: config.host + '/sign-up',
@@ -10,6 +11,7 @@ const signUp = (data) =>
     data,
   });
 
+// Ajax request for an existing user sign-in
 const signIn = (data) =>
   $.ajax({
     url: config.host + '/sign-in',
@@ -17,6 +19,7 @@ const signIn = (data) =>
     data,
   });
 
+// Ajax request for changing a password
 const changePassword = (data) =>
 $.ajax({
   url: config.host + '/change-password/' + store.user.id,
@@ -27,6 +30,7 @@ $.ajax({
   },
 });
 
+// Ajax request for a user to sign out
 const signOut = () =>
   $.ajax({
     url: config.host + '/sign-out/' + store.user.id,

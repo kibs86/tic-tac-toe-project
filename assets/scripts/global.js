@@ -6,11 +6,11 @@
 const globalVars = {
   playerLogin: false,
   createGameSuccess: false,
-  newestGameID: 0,
   activePlayer: 'x',
   gameOver: 'false',
   gameWinner: '',
-  turnCount: 0
+  turnCount: 0,
+  playerEmail: ''
 };
 
 module.exports = {

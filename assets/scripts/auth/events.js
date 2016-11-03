@@ -6,12 +6,17 @@ const api = require('./api');
 const ui = require('./ui');
 
 // Allows a new user to sign up
+// Make sure their password and password confirmation are the same.
 const onSignUp = function (event) {
    event.preventDefault();
    let data = getFormFields(this);
-   api.signUp(data)
-     .then(ui.signUpSuccess)
-     .catch(ui.failure);
+   if (data.credentials.password === data.credentials.password_confirmation) {
+     api.signUp(data)
+       .then(ui.signUpSuccess)
+       .catch(ui.failure);
+   } else {
+     $('.modal-success').text("Please make sure your passwords are the same.");
+   }
   };
 
 // Allows an existing user to login

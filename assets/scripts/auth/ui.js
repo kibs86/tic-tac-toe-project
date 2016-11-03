@@ -7,7 +7,7 @@ const globalJS = require('../global.js');
 // Called from below functions
 const hideAndClear = (modal) => {
   setTimeout(function() {
-    $(modal).modal('hide'); }, 2000);
+    $(modal).modal('hide'); }, 1000);
     $(modal).on('hidden.bs.modal', function () {
       $(this).find("input,textarea,select").val('').end();
       $('.modal-success').text('');

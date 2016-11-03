@@ -172,12 +172,16 @@ h2 {
 // END ASIDE STYLES
 
 // START MODAL STYLES
+.asterisk {
+  color: $red;
+}
+
 .get-stats-output {
   font-family: 'courier new';
 }
 
 .modal-dialog {
-  overflow-y: initial
+  overflow-y: initial;
 }
 
 .modal-body {

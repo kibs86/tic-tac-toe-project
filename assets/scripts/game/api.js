@@ -6,6 +6,7 @@ const app = require('../app.js');
 
 const globalJS = require('../global.js');
 
+// Ajax request to create a new game
 const createGame = (data) =>
   $.ajax({
     url: config.host + '/games',
@@ -16,6 +17,7 @@ const createGame = (data) =>
     },
   });
 
+// Ajax request to join the current game
 const joinGame = (data) =>
   $.ajax({
     url: config.host + '/games/' + app.game.id,
@@ -26,6 +28,7 @@ const joinGame = (data) =>
     },
   });
 
+// Ajax request to update the game state
 const updateGame = (data) =>
 $.ajax({
   url: config.host + '/games/' + globalJS.globalVars.newestGameID,
@@ -36,6 +39,7 @@ $.ajax({
   },
 });
 
+// Ajax request to get a full listing of all user's games
 const gameIndex = function () {
   return $.ajax({
     url: config.host + '/games',
@@ -46,6 +50,7 @@ const gameIndex = function () {
   });
 };
 
+// Ajax request to get the data for just a single game requested
 const gameShow = function (gameId) {
   return $.ajax({
     url: config.host + '/games/' + gameId,

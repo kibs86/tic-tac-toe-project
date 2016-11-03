@@ -15,12 +15,10 @@ $(()=>{
   // event handlers and game logic for tic-tac-toe board
   gameBoard.addBoardHandlers();
 
-  // event handlers and logic for game stats
-  //gameStats.addGameStatHandlers();
-
   // clear out form data if user closes form instead of hitting submit
-  $(".reset").click(function() {
+  $(".reset, .close").click(function() {
         $("input").val("");
+        $(".get-stats-output").text("");
     });
 
   // disable board click events and new game by default

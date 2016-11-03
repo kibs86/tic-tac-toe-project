@@ -3,6 +3,8 @@
 const store = require('../store.js');
 const globalJS = require('../global.js');
 
+// Hides and clears the login/sign up modals after a certain period of time
+// Called from below functions
 const hideAndClear = (modal) => {
   setTimeout(function() {
     $(modal).modal('hide'); }, 2000);
@@ -12,42 +14,40 @@ const hideAndClear = (modal) => {
     });
 };
 
-const signUpSuccess = (data) => {
+// If sign up is successful, let the user know
+const signUpSuccess = () => {
   $('.modal-success').text("SUCCESS!");
-  console.log(data);
   hideAndClear('#sign-up-modal');
 };
 
-const signInSuccess = data => {
+// If sign in is successful, store their data and let the user know
+const signInSuccess = (data) => {
   store.user = data.user;
   $('.logged-in-as').text(data.user.email);
   $('.modal-success').text("SUCCESS!");
   globalJS.globalVars.playerLogin = true;
   globalJS.globalVars.playerEmail = data.user.email;
-  console.log(globalJS.globalVars.playerLogin);
-  console.log(data);
   hideAndClear('#sign-in-modal');
 };
 
-const signOutSuccess = data => {
+// If sign out is successful, let user know
+const signOutSuccess = () => {
   $('.modal-success').text("SUCCESS!");
   globalJS.globalVars.playerLogin = false;
   globalJS.globalVars.playerEmail = '';
-  console.log(globalJS.globalVars.playerLogin);
-  console.log(data);
   $('.logged-in-as').text('');
   hideAndClear('#sign-out-modal');
 };
 
-const changePasswordSuccess = data => {
+// If user successfully changes their password, let user know
+const changePasswordSuccess = () => {
   $('.modal-success').text("SUCCESS!");
-  console.log(data);
   hideAndClear('#change-password-modal');
 };
 
-const failure = (error) => {
-  $('.modal-success').text("FAILURE!");
-  console.error(error);
+// If any login functionality fails, let user know
+const failure = () => {
+  $('.modal-success').text("That function failed.");
 };
 
 

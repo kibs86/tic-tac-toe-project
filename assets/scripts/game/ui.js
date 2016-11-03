@@ -3,42 +3,54 @@
 const globalJS = require('../global.js');
 const app = require('../app.js');
 
+// When game is created successfully, store the game data for later use
+// Let user know that game was created
+// Could display the game ID as well, but took that out for now
 const createGameSuccess = (data) => {
   app.game = data.game;
   $('.player1-message').text("Successfully created");
-  $('.player1-game').text("Game ID: " + app.game.id);
+  //$('.player1-game').text("Game ID: " + app.game.id);
   globalJS.globalVars.createGameSuccess = true;
-  console.log(data);
 };
 
-const joinGameSuccess = (data) => {
+// When game is successfully joined, let player know they've joined
+// Allow board items to be clicked
+const joinGameSuccess = () => {
   $('.player2-message').text("Successfully joined");
-  $('.player2-game').text("Game ID: " + app.game.id);
+  //$('.player2-game').text("Game ID: " + app.game.id);
   $('.board-item').css("pointer-events", "auto");
-  console.log(data);
 };
 
-const updateGameSuccess = (data) => {
+// When game is successfully updated
+const updateGameSuccess = () => {
   console.log("The game was successfully updated");
-  console.log(data);
 };
 
+// When user retrieves all of their game data, display it in appropriate modal
 const gameIndexSuccess = (data) => {
   let newData = JSON.stringify(data.games, null, '\t');
-  console.log(newData);
   $('.get-stats-output').html(newData);
 };
 
+// When user retrieves a single game, dispay it in appropriate model
 const gameShowSuccess = (data) => {
   let newData = JSON.stringify(data.game, null, '\t');
-  console.log(newData);
   $('.get-stats-output').html(newData);
 };
 
+// When user clicks the button to view a summary of game data
+// Get index, and store it in app.sumData
+// Parse through app.sumData to calculate info for summary player2-message
+// Plug those values into appropriate fields
 const gameSumStatsSuccess = (data) => {
   app.sumData = data.games;
+
+  // get total games played by the user
   let totalGamesPlayed = data.games.length;
   $('.sum-tot-games').text(totalGamesPlayed);
+
+  // get the total open games, completed games, games played as player x
+  // and games played as player o
   let openGames = 0;
   let compGames = 0;
   let playX = 0;
@@ -59,26 +71,26 @@ const gameSumStatsSuccess = (data) => {
   $('.sum-tot-games-open').text(openGames);
   $('.sum-tot-games-px').text(playX);
   $('.sum-tot-games-po').text(playO);
-
 };
 
-const createGameFailure = (error) => {
+// If the create game fails, let the user know that it failed
+const createGameFailure = () => {
   $('.player1-message').text("Failed to create game");
-  console.error(error);
 };
 
-const joinGameFailure = (error) => {
+// If the join game fails, let the user know that it failed
+const joinGameFailure = () => {
   $('.player2-message').text("Failed to join game");
-  console.error(error);
 };
 
-const updateGameFailure = (error) => {
-  console.log("update game failed");
-  console.error(error);
+// If the game update fails, let the player know there was an issue
+const updateGameFailure = () => {
+  $('.player1-message').text("Sorry, there is an issue with the game.");
 };
 
-const gameStatsError = (error) => {
-  console.error(error);
+// If the game stats retrieval isn't successful, let the user know
+const gameStatsFailure = () => {
+  $('.get-stats-output, .sum-tot-games-comp').text("Sorry, there was an issue retreiving game statistics.");
 };
 
 
@@ -92,5 +104,5 @@ module.exports = {
   joinGameFailure,
   updateGameSuccess,
   updateGameFailure,
-  gameStatsError,
+  gameStatsFailure,
 };

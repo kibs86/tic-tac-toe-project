@@ -1,11 +1,12 @@
 # Tic-Tac-Toe: Zombie Edition
-
+```md
 This version of Tic-Tac-Toe has a zombie theme!  The Walking Dead is one of my
 favorite shows so for that reason the player icons are a cartoon Rick Grimes
 and a cartoon zombie.
 
 You can play my game by following the below link!  Please don't use a real email
 address when logging in.
+```
 
 [Tic-Tac-Toe: Zombie Edition](https://kibs86.github.io/tic-tac-toe-project)
 
@@ -45,9 +46,11 @@ to fulfill.  I also created wireframes to help me plan out my UI and user storie
 to help me plan out some of my functionality.
 
 #### Development
+```md
 Once I started building the game, I wanted to find a way to keep myself
 organized so I decided to build out features in the order they'd be used by a
 user:
+
 1. Base UI
 2. Login functionality - signup, login, change password, sign out (in that order)
 3. Create a new game
@@ -59,6 +62,7 @@ user:
 9. Went through everything to remove any unnecessary console log statements,
 print out user friendly messages to give them feedback on successes/failures,
 and general formatting fixes to make everything look a little nicer.
+```
 
 #### Version Control
 GitHub was used for version control. For each main unit of work, I created a
@@ -68,6 +72,7 @@ and tested my code, I merged the branches with master.  I tried to save and
 commit frequently with detailed commit messages for what was changed.
 
 #### Problem Solving
+```md
 To start, I tried to test out all of my code as I went.  For the UI that meant
 refreshing the browser to make sure changes I was making were being reflected
 the way I expected.  For the game logic, it meant sending a lot of console.log
@@ -79,6 +84,7 @@ the issues I encountered were minimal and easy to locate.
 I also made use of Google and Stack Overflow to help me find answers as they
 popped up along with looking at closed issues for the project and asking
 classmates.
+```
 
 ## Unsolved Problems
 Player X logs in and creates a game. Player O can either login within the
@@ -88,17 +94,21 @@ if they log in.  If they click "Play Now" then it breaks the current game and
 the New Game button has to be clicked to fix it.
 
 ## Wireframes
+```md
 Web images:
 [Tic-Tac-Toe Web Pg. 1](http://imgur.com/UepNPW9 "Tic Tac Toe Web Page 1")
 [Tic-Tac-Toe Web Pg. 2](http://imgur.com/21dwbm2 "Tic Tac Toe Web Page 2")
 
 Mobile image:
 [Tic-Tac-Toe Mobile](http://imgur.com/YyMZ14x "Tic Tac Toe Mobile")
+```
 
 ## User Stories
+```md
 I've never written user stories before, but below are some I attempted:
 1. As a user, I want a game that allows me to create an account so I can save my games.
 2. As a user, I want to be able to change my password so I can keep my account more secure.
 3. As a user, I would like the ability to play against another person.
 4. As a user, I would like the ability to retreive my game statistics.
 5. As a user, I would like the abilty to play a new game as soon as one ends.
+```

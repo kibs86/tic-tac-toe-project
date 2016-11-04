@@ -27,6 +27,6 @@ $(()=>{
   // new game will be enabled after a game has ended
   $('.board-item').css("pointer-events", "none");
   $('.new-game').css("pointer-events", "none");
-  $('.join-game').css("pointer-events", "none");
+  //$('.join-game').css("pointer-events", "none");
   $('.play-now').css("pointer-events", "none");
 });

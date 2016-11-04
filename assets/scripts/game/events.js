@@ -19,14 +19,16 @@ const onCreateGame = function () {
 
 // A player can only join the game if it's already been created
 const onJoinGame = function () {
-  if ((globalJS.globalVars.playerLogin === true) && (globalJS.globalVars.createGameSuccess === true)) {
-    let data = '';
-    gameApi.joinGame(data)
-      .then(gameUi.joinGameSuccess)
-      .catch(gameUi.joinGameFailure);
-  } else {
-    $('.player2-message').text("A game needs to be created first.");
-  }
+  //if ((globalJS.globalVars.playerLogin === true) && (globalJS.globalVars.createGameSuccess === true)) {
+  let data = '';
+  globalJS.globalVars.joinGameId = $('#join-game-id').val();
+  console.log(globalJS.globalVars.joinGameId);
+  gameApi.joinGame(data)
+    .then(gameUi.joinGameSuccess)
+    .catch(gameUi.joinGameFailure);
+  //} else {
+    //$('.player2-message').text("A game needs to be created first.");
+  //}
 };
 
 // Update game state.  Called from games.js
@@ -60,6 +62,7 @@ const onGetSumStats = function(event) {
     .then(gameUi.gameSumStatsSuccess)
     .catch(gameUi.gameStatsFailure);
 };
+
 
 const addGameAPIHandlers = () => {
   $('.create-game').on('click', onCreateGame);

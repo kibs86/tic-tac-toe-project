@@ -2,6 +2,10 @@
 
 const globalJS = require('../global.js');
 const app = require('../app.js');
+const resourceWatcher = require('../resource-watcher-0.1.0.js');
+const config = require('../config.js');
+const store = require('../store.js');
+
 
 // When game is created successfully, store the game data for later use
 // Let user know that game was created
@@ -9,18 +13,52 @@ const app = require('../app.js');
 const createGameSuccess = (data) => {
   app.game = data.game;
   $('.player1-message').text("Successfully created");
-  //$('.player1-game').text("Game ID: " + app.game.id);
+  $('.player1-game').text("Game ID: " + app.game.id);
   globalJS.globalVars.createGameSuccess = true;
-  $('.join-game').css("pointer-events", "auto");
   $('.play-now').css("pointer-events", "auto");
+  $('.board-item').css("pointer-events", "auto");
 };
 
 // When game is successfully joined, let player know they've joined
 // Allow board items to be clicked
-const joinGameSuccess = () => {
+const joinGameSuccess = (data) => {
+  app.game = data.game;
   $('.player2-message').text("Successfully joined");
-  //$('.player2-game').text("Game ID: " + app.game.id);
-  $('.board-item').css("pointer-events", "auto");
+  $('.player2-game').text("Game ID: " + app.game.id);
+  let gameWatcher = resourceWatcher.resourceWatcher(config.host + '/games/' + app.game.id + '/watch', {
+        Authorization: 'Token token=' + store.user.token
+  });
+
+  gameWatcher.on('change', function (data) {
+  console.log(data);
+  if (data.game && data.game.cells) {
+    const diff = changes => {
+      let before = changes[0];
+      let after = changes[1];
+      for (let i = 0; i < after.length; i++) {
+        if (before[i] !== after[i]) {
+          return {
+            index: i,
+            value: after[i],
+          };
+        }
+      }
+
+      return { index: -1, value: '' };
+    };
+
+    let cell = diff(data.game.cells);
+    $('#watch-index').val(cell.index);
+    $('#watch-value').val(cell.value);
+  } else if (data.timeout) { //not an error
+    gameWatcher.close();
+  }
+});
+
+    gameWatcher.on('error', function (e) {
+      console.error('an error has occurred with the stream', e);
+    });
+
 };
 
 // When game is successfully updated
@@ -81,8 +119,9 @@ const createGameFailure = () => {
 };
 
 // If the join game fails, let the user know that it failed
-const joinGameFailure = () => {
+const joinGameFailure = (error) => {
   $('.player2-message').text("Failed to join game");
+  console.error(error);
 };
 
 // If the game update fails, let the player know there was an issue

@@ -2,10 +2,7 @@
 
 const globalJS = require('../global.js');
 const app = require('../app.js');
-const resourceWatcher = require('../resource-watcher-0.1.0.js');
-const config = require('../config.js');
-const store = require('../store.js');
-
+const watcher = require('../watcher.js');
 
 // When game is created successfully, store the game data for later use
 // Let user know that game was created
@@ -25,41 +22,9 @@ const joinGameSuccess = (data) => {
   app.game = data.game;
   $('.player2-message').text("Successfully joined");
   $('.player2-game').text("Game ID: " + app.game.id);
-  let gameWatcher = resourceWatcher.resourceWatcher(config.host + '/games/' + app.game.id + '/watch', {
-        Authorization: 'Token token=' + store.user.token
-  });
-
-  gameWatcher.on('change', function (data) {
-  console.log(data);
-  if (data.game && data.game.cells) {
-    const diff = changes => {
-      let before = changes[0];
-      let after = changes[1];
-      for (let i = 0; i < after.length; i++) {
-        if (before[i] !== after[i]) {
-          return {
-            index: i,
-            value: after[i],
-          };
-        }
-      }
-
-      return { index: -1, value: '' };
-    };
-
-    let cell = diff(data.game.cells);
-    $('#watch-index').val(cell.index);
-    $('#watch-value').val(cell.value);
-  } else if (data.timeout) { //not an error
-    gameWatcher.close();
-  }
-});
-
-    gameWatcher.on('error', function (e) {
-      console.error('an error has occurred with the stream', e);
-    });
-
+  watcher.startWatcher();
 };
+
 
 // When game is successfully updated
 const updateGameSuccess = () => {

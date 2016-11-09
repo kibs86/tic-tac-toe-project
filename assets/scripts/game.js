@@ -96,6 +96,14 @@ const gameOver = function () {
   globalJS.globalVars.gameOver = "true";
 };
 
+// Handle code that comes in from watcher
+const onUpdateWatch = function (index, value) {
+  let tileIndex = index;
+  let tileValue = value;
+  console.log('tileIndex is ' + tileIndex);
+  console.log('tileValue is ' + tileValue);
+};
+
 // Main game logic
 // Makes calls up to above functions for some parts
 const onTileClick = function () {
@@ -217,4 +225,5 @@ const addBoardHandlers = () => {
 
 module.exports = {
   addBoardHandlers,
+  onUpdateWatch,
 };
